@@ -22,8 +22,7 @@ var user={
     },*/
     signup:function(usr,callback)
     {
-        var token=randomstring.generate(7);
-        var res= db.query('insert into user_mst values(?,?,?,?,?,?,?,?,?,?)',[usr.usr_sr_no,usr.pk_usr_email_id,usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,usr.usr_pro_pic,usr.usr_verify,token,usr.usr_type],callback);
+        var res= db.query('insert into user_mst values(?,?,?,?,?,?,?,?,?,?)',[usr.usr_sr_no,usr.pk_usr_email_id,usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,usr.usr_pro_pic,usr.usr_verify,usr.usr_token,usr.usr_type],callback);
        
     },
     UpdateUser:function(id,usr,callback){
@@ -56,6 +55,10 @@ var user={
     login:function(usr,callback)
     {
     return db.query('select * from user_mst where pk_usr_email_id=? and usr_pass=?',[usr.pk_usr_email_id,usr.usr_pass],callback);
+    },
+    verifyuser:function(id,callback)
+    {
+    return db.query('update user_mst set usr_verify=1 where pk_usr_email_id=?',[id],callback);
     },
     
    sendMail:function(demo,callback){

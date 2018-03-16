@@ -16,4 +16,18 @@ router.get('/:id?',function(req,res,next){
     });
 
 });
+router.put('/:id',function(req,res,next){
+
+    user.verifyuser(req.params.id,function(err,rows){
+        if(err)
+        {
+            res.json(err);
+        }
+        else
+        {
+            res.json(rows);
+        }
+    });
+
+});
 module.exports=router;

@@ -26,7 +26,7 @@ var passchange=require('./routes/changepass');
 var rem=require('./routes/routes_reminder');
 var data=require('./routes/usertbl');
 
-//var forget=require('./routes/forgetpass');
+var forget1=require('./routes/forgetpass');
 //eba09921db8a52583a1eba96ce4e3b80977e6c4e
 
 //>>>>>>> eba09921db8a52583a1eba96ce4e3b80977e6c4e
@@ -59,6 +59,7 @@ app.use('/signup',sign);
 app.use('/blog_likes',likes);
 app.use('/likeEmail',likeEmail);
 app.use('/forget',forget);
+app.use('/verify',forget1);
 app.use('/rem',rem);
 app.use('/alldata',data);
 app.use('/change',passchange);
