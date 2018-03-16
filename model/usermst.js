@@ -1,5 +1,7 @@
 var db=require('../dbconnection');
 var email=require("emailjs/email");
+var randomstring = require("randomstring");
+
 
 var user={
     getAlluser:function(callback){
@@ -20,7 +22,8 @@ var user={
     },*/
     signup:function(usr,callback)
     {
-        var res= db.query('insert into user_mst values(?,?,?,?,?,?,?,?,?,?)',[usr.usr_sr_no,usr.pk_usr_email_id,usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,usr.usr_pro_pic,usr.usr_verify,usr.usr_token,usr.usr_type],callback);
+        var token=randomstring.generate(7);
+        var res= db.query('insert into user_mst values(?,?,?,?,?,?,?,?,?,?)',[usr.usr_sr_no,usr.pk_usr_email_id,usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,usr.usr_pro_pic,usr.usr_verify,token,usr.usr_type],callback);
        
     },
     UpdateUser:function(id,usr,callback){
@@ -40,6 +43,7 @@ var user={
         //{
           //  msg="done";
            // return msg;
+           
             return result= db.query('update user_mst set usr_pass=? where pk_usr_email_id=?',[usr.usr_pass,usr.pk_usr_email_id],callback);
             
         //}
@@ -58,7 +62,7 @@ var user={
     
     var server  = email.server.connect({
        user:    "medskyy@gmail.com",
-       password:"jainamshah007", 
+       password:"nopassword1234", 
        host:    "smtp.gmail.com", 
        ssl:     true,
        port:465
