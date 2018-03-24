@@ -26,8 +26,9 @@ var user={
        
     },
     UpdateUser:function(id,usr,callback){
-        return db.query('update user_mst set usr_name=?,usr_mno=?,usr_pass=? where pk_usr_email_id=?',[usr.usr_name,usr.usr_mno,usr.usr_pass,id],callback);
-        //return db.query('update task set Title=?,Status=? where Id=?',[t.Title,t.Status,t.Id],callback);
+        //return db.query('update user_mst set usr_name=?,usr_mno=?,usr_pass=? where pk_usr_email_id=?',[usr.usr_name,usr.usr_mno,usr.usr_pass,id],callback);
+        return db.query('update user_mst set usr_name=?,usr_mno=?,usr_pass=?,usr_gen=?,blood_grp=?,usr_bdate=? where pk_usr_email_id=?',[usr.usr_name,usr.usr_mno,usr.usr_pass,usr.usr_gen,usr.blood_grp,usr.usr_bdate,id],callback);
+
     },
     deleteUser:function(id,callback)
     {
