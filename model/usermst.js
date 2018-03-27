@@ -69,7 +69,7 @@ var user={
        password:"nopassword1234", 
        host:    "smtp.gmail.com", 
        ssl:     true,
-       port:465
+       port:    465
     });
     
     server.send({
